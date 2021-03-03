@@ -1,5 +1,5 @@
 package Springback.SBack.service;
 
-public class Servicio1 {
-
+public interface Servicio1{
+	public void createUsuario(String nombre); 
 }

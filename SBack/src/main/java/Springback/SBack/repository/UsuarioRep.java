@@ -1,5 +1,7 @@
 package Springback.SBack.repository;
 
-public class UsuarioRep {
+import org.springframework.data.jpa.repository.JpaRepository;
+import Springback.SBack.model.Usuario;
 
+public interface UsuarioRep extends JpaRepository<Usuario, Long>{
 }
