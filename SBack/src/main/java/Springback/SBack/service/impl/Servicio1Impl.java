@@ -11,8 +11,8 @@ public class Servicio1Impl implements Servicio1{
 	UsuarioRep uc;
 	
 	@Override
-	public void createUsuario(String nombre) {
-		uc.save(new Usuario(nombre));
+	public void createUsuario(Usuario Usuario) {
+		uc.save(Usuario);
 	}
 
 	@Override
