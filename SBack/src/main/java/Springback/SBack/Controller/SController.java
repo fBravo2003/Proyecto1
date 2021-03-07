@@ -41,7 +41,7 @@ public class SController {
 		}
 	}
 	
-	@ApiOperation(value ="Buscar Usuario por id")
+	@ApiOperation(value ="Creacion Usuario")
 	@ApiResponses({
 		@ApiResponse(code = 200, message = "Usuario creado", response = Usuario.class)
 	})
@@ -53,7 +53,7 @@ public class SController {
 		return new ResponseEntity<>("Usuario creado", HttpStatus.OK);
 	}
 	
-	@ApiOperation(value ="Buscar Usuario por id")
+	@ApiOperation(value ="Borrar Usuario")
 	@ApiResponses({
 		@ApiResponse(code = 200, message = "Usuario borrado", response = Usuario.class),
 		@ApiResponse(code = 404, message = "Usuario no encontrado", response = HttpStatus.class)
