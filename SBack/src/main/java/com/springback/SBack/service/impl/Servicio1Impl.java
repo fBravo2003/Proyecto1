@@ -1,14 +1,14 @@
-package Springback.SBack.service.impl;
+package com.springback.SBack.service.impl;
 
 import java.util.Optional;
 
-import Springback.SBack.model.Usuario;
-import Springback.SBack.repository.UsuarioRep;
-import Springback.SBack.service.Servicio1;
+import com.springback.SBack.model.Usuario;
+import com.springback.SBack.repository.UsuarioRep;
+import com.springback.SBack.service.Servicio1;
 
 public class Servicio1Impl implements Servicio1{
 
-	UsuarioRep uc;
+	private UsuarioRep uc;
 	
 	@Override
 	public void createUsuario(Usuario Usuario) {

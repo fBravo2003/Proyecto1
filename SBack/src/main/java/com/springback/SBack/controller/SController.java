@@ -1,6 +1,6 @@
-package Springback.SBack.Controller;
+package com.springback.SBack.controller;
 
-import java.util.Optional;
+import java.util.Optional; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,19 +10,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import Springback.SBack.model.Usuario;
-import Springback.SBack.service.Servicio1;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import com.springback.SBack.model.Usuario;
+import com.springback.SBack.service.Servicio1;
+
 @RestController
+@RequestMapping("/api")
 public class SController {
 	
-	@Autowired
-	Servicio1 servicio;
+	private Servicio1 servicio;
 	
 	@ApiOperation(value ="Buscar Usuario por id")
 	@ApiResponses({
@@ -34,9 +36,9 @@ public class SController {
 	public ResponseEntity<?> getUsuario(@PathVariable Long id){
 		Optional<Usuario> servi = servicio.getById(id);
 		
-		if(servi.isPresent()) {
+		if(!servi.isPresent()) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} else {
+		}else {
 			return new ResponseEntity(servi.get(), HttpStatus.OK);		
 		}
 	}
@@ -65,7 +67,7 @@ public class SController {
 		
 		if(isRemoved) {
 			return new ResponseEntity<>("Usuario borrado", HttpStatus.OK);
-		} else {
+		}else {
 			return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
 		}
 	}

@@ -1,4 +1,4 @@
-package Springback.SBack;
+package com.springback.SBack;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

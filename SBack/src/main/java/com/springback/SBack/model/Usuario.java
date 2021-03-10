@@ -1,4 +1,4 @@
-package Springback.SBack.model;
+package com.springback.SBack.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

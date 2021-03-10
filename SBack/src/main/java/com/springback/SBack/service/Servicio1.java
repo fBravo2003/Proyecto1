@@ -1,8 +1,8 @@
-package Springback.SBack.service;
+package com.springback.SBack.service;
 
 import java.util.Optional;
 
-import Springback.SBack.model.Usuario;
+import com.springback.SBack.model.Usuario;
 
 public interface Servicio1{
 	void createUsuario(Usuario Usuario); 
