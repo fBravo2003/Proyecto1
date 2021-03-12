@@ -1,4 +1,4 @@
-package Springback.SBack;
+package com.springback.SBack;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
