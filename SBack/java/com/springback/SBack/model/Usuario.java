@@ -10,14 +10,10 @@ import javax.persistence.Table;
 public class Usuario {
 	
 	@Id
-	private Long id;
+	private long id;
 	
 	@Column(name = "nombre", length = 100)
 	private String nombre;
-
-	public Usuario(String nombre) {
-		this.nombre = nombre;
-	}
 	
 	public Long getId() {
 		return id;

@@ -24,28 +24,32 @@ import com.springback.SBack.service.Servicio1;
 @RequestMapping("/api")
 public class SController {
 	
+	@Autowired
 	private Servicio1 servicio;
 	
 	@ApiOperation(value ="Buscar Usuario por id")
 	@ApiResponses({
 		@ApiResponse(code = 200, message = "Usuario encontrado", response = Usuario.class),
+		@ApiResponse(code = 401, message = "No tiene los permisos necesarios para esta operacion", response = HttpStatus.class), 
 		@ApiResponse(code = 404, message = "Usuario no encontrado", response = HttpStatus.class)
 	})
 	
 	@GetMapping(value = "/solicitar/{id}")
 	public ResponseEntity<?> getUsuario(@PathVariable Long id){
-		Optional<Usuario> servi = servicio.getById(id);
 		
+		Optional<Usuario> servi = servicio.getById(id);
 		if(!servi.isPresent()) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}else {
-			return new ResponseEntity(servi.get(), HttpStatus.OK);		
+			return new ResponseEntity<>(servi.get(), HttpStatus.OK);		
 		}
+		
 	}
 	
 	@ApiOperation(value ="Creacion Usuario")
 	@ApiResponses({
-		@ApiResponse(code = 200, message = "Usuario creado", response = Usuario.class)
+		@ApiResponse(code = 200, message = "Usuario creado", response = Usuario.class),
+		@ApiResponse(code = 401, message = "No tiene los permisos necesarios para esta operacion", response = HttpStatus.class)
 	})
 	
 	@PostMapping("/registrar")
@@ -58,6 +62,7 @@ public class SController {
 	@ApiOperation(value ="Borrar Usuario")
 	@ApiResponses({
 		@ApiResponse(code = 200, message = "Usuario borrado", response = Usuario.class),
+		@ApiResponse(code = 401, message = "No tiene los permisos necesarios para esta operacion", response = HttpStatus.class),
 		@ApiResponse(code = 404, message = "Usuario no encontrado", response = HttpStatus.class)
 	})
 	
