@@ -8,4 +8,5 @@ public interface Servicio1{
 	void createUsuario(Usuario Usuario); 
 	Optional<Usuario> getById(Long id);
 	boolean deleteById(Long id);
+	Iterable<Usuario> getList();
 }

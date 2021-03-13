@@ -36,4 +36,10 @@ public class Servicio1Impl implements Servicio1{
 		}
 	}
 
+	@Override
+	public Iterable<Usuario> getList() {
+		Iterable<Usuario> lista = uc.findAll();
+		return lista;
+	}
+
 }

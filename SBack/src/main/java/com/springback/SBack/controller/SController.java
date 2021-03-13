@@ -1,6 +1,8 @@
 package com.springback.SBack.controller;
 
-import java.util.Optional; 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;  
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +28,29 @@ public class SController {
 	
 	@Autowired
 	private Servicio1 servicio;
+	
+	@ApiOperation(value = "Lista de usuarios")
+	@ApiResponses({
+		@ApiResponse(code = 200, message = "Usuarios encontrados", response = Usuario.class),
+		@ApiResponse(code = 401, message = "No tiene los permisos necesarios para esta operacion", response = HttpStatus.class), 
+		@ApiResponse(code = 404, message = "No se a encontrado ningun usuario registrado", response = HttpStatus.class)
+	})
+	
+	@GetMapping("/lista")
+	public ResponseEntity<?> getLista(){
+		List<Usuario> lista = new ArrayList<>();
+		Iterable<Usuario> usuarios = servicio.getList();
+		
+		if(usuarios.iterator().hasNext()) {	
+			for(Usuario user : usuarios) {
+				lista.add(user);
+			}
+			
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(lista, HttpStatus.NOT_FOUND);
+		}
+	}
 	
 	@ApiOperation(value ="Buscar Usuario por id")
 	@ApiResponses({
