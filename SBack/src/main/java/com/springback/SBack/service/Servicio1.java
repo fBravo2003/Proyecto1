@@ -9,4 +9,5 @@ public interface Servicio1{
 	Optional<Usuario> getById(Long id);
 	boolean deleteById(Long id);
 	Iterable<Usuario> getList();
+	boolean isExist(Long id);
 }

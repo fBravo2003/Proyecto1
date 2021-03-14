@@ -21,9 +21,8 @@ public class Servicio1Impl implements Servicio1{
 	}
 
 	@Override
-	public Optional<Usuario> getById(Long id) {
-		if(uc.existsById(id)) return uc.findById(id);
-		else return null;
+	public Optional<Usuario> getById(Long id) {		
+		return uc.findById(id);
 	}
 
 	@Override
@@ -40,6 +39,11 @@ public class Servicio1Impl implements Servicio1{
 	public Iterable<Usuario> getList() {
 		Iterable<Usuario> lista = uc.findAll();
 		return lista;
+	}
+
+	@Override
+	public boolean isExist(Long id) {
+		return (uc.existsById(id))? true: false;
 	}
 
 }

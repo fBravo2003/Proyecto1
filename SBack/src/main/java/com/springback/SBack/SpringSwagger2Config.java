@@ -1,6 +1,6 @@
 package com.springback.SBack;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Bean; 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,7 +21,8 @@ public class SpringSwagger2Config {
 	@Bean
     public Docket api() { 
 		return new Docket(DocumentationType.SWAGGER_2)  
-        .select()                                  
+		.forCodeGeneration(true)
+		.select()                                  
         .apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework")))             
         .build()
         .useDefaultResponseMessages(false)
